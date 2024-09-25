@@ -1,2 +1,2 @@
 # Final-Project-DEPI
-Watch E-commers 
+Watch E-commerce
