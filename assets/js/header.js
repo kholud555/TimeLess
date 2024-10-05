@@ -6,6 +6,8 @@ function loadContent(elementId, filePath) {
             document.getElementById(elementId).innerHTML = data;
         })
         .catch(error => console.error('Error loading content:', error));
+
+        // updateCart();
 }
 
 window.onload = function() {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Timeless</title>
 </head>
 
@@ -17,13 +17,13 @@
                     </a>
                 </div>
                 <div class="menu-div" onclick="openNav()" id="side_bar_div">
-                    <img src="images/menu.svg" alt="Menu">
+                    <img src="assets/images/menu.svg" alt="Menu">
                 </div>
                 <div class="nav-div">
                     <ul>
                         <li><a class="link" href="index.html">Home</a></li>
                         <li><a class="link" href="about.html">About</a></li>
-                        <li><a class="link" href="shop.html">Shop</a></li>
+                        <li><a class="link" href="products.html">Shop</a></li>
                         <li><a class="link" href="contact.html">Contacts</a></li>
                     </ul>
                 </div>
@@ -31,15 +31,26 @@
                     <ul>
                         <li>
                             <div class="login-div">
-                                <img class="user-img" src="images/user.svg" alt="User">
+                                <img class="user-img" src="assets/images/user.svg" alt="User">
                                 <a class="link" href="login.html">Sign Up</a>
                             </div>
                         </li>
 
                         <li>
-                            <div class="cart-div">
-                                <img class="cart-img" src="images/shopping-bag-open.svg" alt="Cart">
-                                <a class="link" href="cart.html">Cart (<span id="counter">0</span>)</a>
+                            <div class="cart-header">
+                                <div class="cart-div">
+
+                                    <img class="cart-img" src="assets/images/shopping-bag-open.svg" alt="Cart">
+                                    <a class="link" href="cart.html"> <span id="counter"> 0 </span>Cart </a>
+                                    
+                                     <div class="cart-dropdown" id="cart-dropdown">
+                                        <ul id="cart-items"></ul>
+                                        <div class="cart-dropdown-btns">
+                                        <a href="cart.html" class="cart-button">View cart</a>
+                                        <a href="checkout.html" class="checkout-button">Checkout</a>
+                                    </div>
+                                    </div>
+                                </div> 
                             </div>
                         </li>
                     </ul>
@@ -56,25 +67,27 @@
             <li><a class="link" href="about.html">About</a></li>
             <li><a class="link" href="shop.html">Shop</a></li>
             <li><a class="link" href="contact.html">Contacts</a></li>
+            <link rel="stylesheet" href="assets/font/Karla-Regular.ttf">
         </ul>
         <ul>
             <li>
                 <div class="login-div-side">
-                    <img class="user-img-side" src="images/user.svg" alt="User">
+                    <img class="user-img-side" src="assets/images/user.svg" alt="User">
                     <a class="link" href="login.html">Sign Up</a>
                 </div>
             </li>
             <li>
                 <div class="cart-div-side">
-                    <img class="cart-img-side" src="images/shopping-bag-open.svg" alt="Cart">
-                    <a class="link" href="cart.html">Cart (<span id="counter">0</span>)</a>
+                    <img class="cart-img-side" src="assets/images/shopping-bag-open.svg" alt="Cart">
+                    <!-- <a class="link" href="cart.html">Cart (<span id="counter">0</span>)</a> -->
+                    <a class="link" href="cart.html">Cart<span id="counter">0</span></a>
                 </div>
             </li>
         </ul>
     </div>
 
 
-    <script src="js/menu.js"></script>
+    <script src="assets/js/menu.js"></script>
 
 </body>
 

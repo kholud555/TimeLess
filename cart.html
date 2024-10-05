@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="cart-header">
+        <div class="cart-icon">
+            <a class="link" href="cart.html"><span id="counter">0</span></a>
+            <img class="cart-img" src="assets/images/shopping-bag-open.svg" alt="Cart">
+            <!-- <a class="link" href="cart.html">Cart (<span id="counter">0</span>)</a> -->
+
+            
+            <div class="cart-dropdown" id="cart-dropdown">
+                <ul id="cart-items"></ul>
+                <a href="cart.html" class="cart-button">View cart</a>
+                <a href="checkout.html" class="checkout-button">Checkout</a>
+            </div>
+        </div>
+    </section>
+
+
+<main>
+    <div class="breadcrumb-container">
+        <h1 id="page-title"></h1>
+        <div id="breadcrumb"></div>
+    </div>
+    
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total-price">0.00</span></p>
+    </div>
+</main>
+<div id="footer"></div>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/page-title.js"></script>
+</body>
+</html>
