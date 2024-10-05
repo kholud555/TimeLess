@@ -117,7 +117,7 @@ body {
     position: fixed;
     z-index: 1;
     top: 0;
-    right: 0;
+    left: 0;
     background-color: var(--white-font);
     box-shadow: 0 0 5px var(--main-color);
     overflow-x: hidden;
@@ -148,21 +148,24 @@ body {
     margin-top: 1rem;
 }
 
-.user-img-side , .cart-img-side {
+.user-img-side,
+.cart-img-side {
     width: var(--main-font);
     height: var(--main-font);
     margin-bottom: -30px;
     cursor: pointer;
 }
 
-.login-div-side, .cart-div-side {
+.login-div-side,
+.cart-div-side {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: .5rem 1rem  ;
+    padding: .5rem 1rem;
 }
 
-.login-div-side a, .cart-div-side a {
+.login-div-side a,
+.cart-div-side a {
     margin-left: 1rem;
 }
 
@@ -174,7 +177,6 @@ body {
     gap: 1rem;
     padding: 3rem 0;
 }
-
 
 /* End of prodacts-list */
 
