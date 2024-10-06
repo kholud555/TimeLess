@@ -1,45 +1,72 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cartItems = document.getElementById('cart-items');
+    const cartItems = document.getElementById('cart-items'); // tbody element
     const totalPrice = document.getElementById('total-price');
+    const updateCartButton = document.getElementById('update-cart'); // Update Cart button
 
     function loadCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cartItems.innerHTML = '';
+        cartItems.innerHTML = ''; // Clear the previous cart items
         let total = 0;
 
+        // Create a table row for each cart item
         cart.forEach(product => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                ${product.name} - $${product.price.toFixed(2)} 
-                <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}">
-                <button class="update-cart" data-product-id="${product.id}">Update</button>
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px;"></td>
+                <td>${product.name}</td>
+                <td>$${product.price.toFixed(2)}</td>
+                <td>
+                    <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}">
+                </td>
+                <td>$${(product.price * product.quantity).toFixed(2)}</td>
+                <td>
+                    <button class="remove-item" data-product-id="${product.id}">Remove</button>
+                </td>
             `;
-            cartItems.appendChild(li);
+            cartItems.appendChild(tr); // Append row to tbody
+
+            // Add to the total price
             total += product.price * product.quantity;
         });
 
-        totalPrice.textContent = total.toFixed(2);
+        totalPrice.textContent = total.toFixed(2); // Update total price
 
-        document.querySelectorAll('.update-cart').forEach(button => {
+        // Add event listeners for all remove buttons
+        document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', () => {
                 const productId = button.getAttribute('data-product-id');
-                const quantityInput = document.querySelector(`input[data-product-id="${productId}"]`);
-                updateCart(productId, parseInt(quantityInput.value));
+                removeCartItem(productId);
             });
         });
     }
 
-    function updateCart(productId, quantity) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartItem = cart.find(item => item.id == productId);
+    // Update the cart when the "Update Cart" button is clicked
+    updateCartButton.addEventListener('click', () => {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        if (cartItem) {
-            cartItem.quantity = quantity;
-        }
+        // Loop through each product in the cart and update the quantity based on input values
+        cart.forEach(product => {
+            const quantityInput = document.querySelector(`input[data-product-id="${product.id}"]`);
+            if (quantityInput) {
+                product.quantity = parseInt(quantityInput.value);
+            }
+        });
 
+        // Save the updated cart to localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Reload the cart to reflect the changes
         loadCart();
+    });
+
+    // Function to remove a cart item
+    function removeCartItem(productId) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart = cart.filter(item => item.id !== parseInt(productId)); // Remove the item by its id
+
+        localStorage.setItem('cart', JSON.stringify(cart)); // Save the updated cart to localStorage
+        loadCart(); // Reload the cart
     }
 
-    loadCart();
+    loadCart(); // Initial cart load when the page is ready
 });
