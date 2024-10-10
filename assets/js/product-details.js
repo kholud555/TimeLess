@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="price">$${product.price}</p>
             <button class="product-add-to-cart" data-product-id="${product.id}" >Add to cart</button>
         `;
+        // Add event listener to add to cart button after it's been created
+  const addToCartButton = productDetailsContainer.querySelector('.product-add-to-cart');
+  addToCartButton.addEventListener('click', () => {
+    addToCart(productId);
+});
     } else {
         productDetailsContainer.innerHTML = '<p>Product not found.</p>';
     }
@@ -41,6 +46,65 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.add-to-cart').addEventListener('click', () => {
         addToCart(productId);
     });
+
+    // Add to cart Header function
+    function addToCart(productId) {
+        const product = products.find(p => p.id == productId);
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItem = cart.find(item => item.id == productId);
+
+        if (cartItem) {
+            cartItem.quantity += 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+    }
+
+    function updateCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.getElementById('counter');
+        const cartItems = document.getElementById('cart-items');
+        if (cartCount) {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        if (cartItems) {
+            cartItems.innerHTML = '';
+
+            cart.forEach(product => {
+                console.log('Product:', product); // Log the product to see all attributes
+                const price = typeof product.price === 'number' ? product.price.toFixed(2) : '0.00';
+                const li = document.createElement('li');
+                li.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                ${product.name} - $${price} x ${product.quantity}
+                <button class="remove-from-cart" data-product-id="${product.id}">Remove</button>
+            `;
+                cartItems.appendChild(li);
+            });
+        }
+
+        document.querySelectorAll('.remove-from-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-product-id');
+                removeFromCart(productId);
+            });
+        });
+    }
+
+    function removeFromCart(productId) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart = cart.filter(item => item.id != productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+    }
+
+    updateCart();
+
+
 
     updateCart();
 });

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHECKOUT</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="breadcrumb-container">
+            <h1 id="page-title"></h1>
+            <div id="breadcrumb"></div>
+        </div>
+
+        <div class="container my-4">
+            <div class="cart-details">
+                <h2 class="Cart-title">Order Details</h2>
+                <div class="time-line">
+                    <div class="timeline">
+                        <!-- Progress Bar -->
+                        <div class="timeline-progress"></div>
+
+                        <!-- Step 1: Processing -->
+                        <div class="timeline-step active">
+                            <img class="icon" src="assets/images/3209452_circle_processing_redo_refresh_reload_icon (1).png" alt="">
+                            <div class="circle two">
+                            </div>
+                            <p>Processing</p>
+                        </div>
+
+                        <!-- Step 2: Shipped -->
+                        <div class="timeline-step">
+                            <img class="icon" src="assets/images/5740091_box_delivery_down_download_package_icon (1).png" alt="">
+                            <div class="circle"></div>
+                            <p>Shipped</p>
+                        </div>
+
+                        <!-- Step 3: Out to Delivery -->
+                        <div class="timeline-step">
+                            <img class="icon" src="assets/images/4634438_delivered_interface_success_verfied_icon (1).png" alt="">
+                            <div class="circle"></div>
+                            <p>Out to Delivery</p>
+                        </div>
+
+                        <!-- Step 4: Delivered -->
+                        <div class="timeline-step special">
+                            <img class="icon" src="assets/images/352516_local_shipping_icon (1).png" alt="">
+                            <div class="circle"></div>
+                            <p>Delivered</p>
+                        </div>
+                    </div>
+                </div>
+                <table class="cart_table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="th-special">Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th class="sp-sub">Subtotal</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items" class="cart-edit">
+                        <!-- Items will be dynamically inserted here -->
+                    </tbody>
+                </table>
+                <button class="edit" id="update-cart">Update Cart</button>
+
+                <div class="cart-totals">
+                    <p class="total-p"> Total</p>
+
+                    <table class="table table-bordered">
+                        
+                        <tbody>
+                            <!-- Subtotal -->
+                            <tr>
+                                <td>Subtotal :</td>
+                                <td><span id="total-price">0.00 </span>$</td>
+                            </tr>
+            
+                            <!-- Shipping -->
+                            <tr>
+                                <td>Shipping :</td>
+                                <td>
+                                    <select class="form-select select-sty">
+                                        <option value="0">Free</option>
+                                        <option value="10">10.00 $</option>
+                                    </select>
+                                </td>
+                            </tr>
+            
+                            <!-- Payment -->
+                            <tr>
+                                <td>Payment :</td>
+                                <td>
+                                    <select class="form-select select-sty">
+                                        <option value="0">Cash on Delivery</option>
+                                        <option value="10">Visa</option>
+                                    </select>
+                                </td>
+                            </tr>
+            
+                            <!-- Total -->
+                            <tr>
+                                <td>Total :</td>
+                                <td><span id="total-price">285.00 </span>$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn-cancel" id="cancel" href="checkout.html">Cancel Order</button>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/page-title.js"></script>
+    <script src="assets/js/checkout.js"></script>
+
+
+</body>
+
+</html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <title>Timeless</title>
 </head>
 
@@ -11,14 +12,15 @@
     <section>
         <header>
             <nav id="nav-bar">
-                <div class="logo-div">
-                    <a class="link" href="index.html">
-                        <p class="Logo-p"><span>T</span>ime<span>l</span>ess</p>
-                    </a>
-                </div>
                 <div class="menu-div" onclick="openNav()" id="side_bar_div">
                     <img src="assets/images/menu.svg" alt="Menu">
                 </div>
+                <div class="logo-div">
+                    <a class="link sp-link" href="index.html">
+                        <p class="Logo-p"><span>T</span>ime<span>l</span>ess</p>
+                    </a>
+                </div>
+
                 <div class="nav-div">
                     <ul>
                         <li><a class="link" href="index.html">Home</a></li>
@@ -28,32 +30,27 @@
                     </ul>
                 </div>
                 <div class="sign-div">
-                    <ul>
-                        <li>
-                            <div class="login-div">
-                                <img class="user-img" src="assets/images/user.svg" alt="User">
-                                <a class="link" href="login.html">Sign Up</a>
-                            </div>
-                        </li>
+                    <div class="login-div">
+                        <img class="user-img" src="assets/images/user.svg" alt="User">
+                        <a class="link" href="login.html">Sign Up</a>
+                    </div>
+                    <div class="cart-header">
+                        <div class="cart-div">
+                            <a href="cart.html"><span class="responsive-counter" id="counter2"> 0 </span></a>
+                            <img class="cart-img" src="assets/images/shopping-bag-open.svg" alt="Cart">
 
-                        <li>
-                            <div class="cart-header">
-                                <div class="cart-div">
+                            <a class="link sp" href="cart.html">Cart ( <span id="counter"> 0 </span> )</a>
 
-                                    <img class="cart-img" src="assets/images/shopping-bag-open.svg" alt="Cart">
-                                    <a class="link" href="cart.html">Cart ( <span id="counter"> 0 </span> )</a>
-
-                                    <div class="cart-dropdown" id="cart-dropdown">
-                                        <ul id="cart-items"></ul>
-                                        <div class="cart-dropdown-btns">
-                                            <a href="cart.html" class="cart-button">View cart</a>
-                                            <a href="checkout.html" class="checkout-button">Checkout</a>
-                                        </div>
-                                    </div>
+                            <div class="cart-dropdown" id="cart-dropdown">
+                                <ul id="cart-items"></ul>
+                                <div class="cart-dropdown-btns">
+                                    <a href="cart.html" class="cart-button">View cart</a>
+                                    <a href="checkout.html" class="checkout-button">Checkout</a>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+
+                        </div>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -65,28 +62,15 @@
         <ul>
             <li><a class="link" href="index.html">Home</a></li>
             <li><a class="link" href="about.html">About</a></li>
-            <li><a class="link" href="shop.html">Shop</a></li>
+            <li><a class="link" href="products.html">Shop</a></li>
             <li><a class="link" href="contact.html">Contacts</a></li>
-            <link rel="stylesheet" href="assets/font/Karla-Regular.ttf">
-        </ul>
-        <ul>
-            <li>
-                <div class="login-div-side">
-                    <img class="user-img-side" src="assets/images/user.svg" alt="User">
-                    <a class="link" href="login.html">Sign Up</a>
-                </div>
-            </li>
-            <li>
-                <div class="cart-div-side">
-                    <img class="cart-img-side" src="assets/images/shopping-bag-open.svg" alt="Cart">
-                    <a class="link" href="cart.html">Cart ( <span id="counter"> 0 </span> )</a>
-                </div>
-            </li>
+            <li><a class="link" href="login.html">Sign Up</a></li>
         </ul>
     </div>
 
 
     <script src="assets/js/menu.js"></script>
+    <script src="assets/js/cart.js"></script>
 
 </body>
 

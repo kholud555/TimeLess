@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px;"></td>
-                <td>${product.name}</td>
+                <td class="product-name">${product.name}</td>
                 <td>$${product.price.toFixed(2)}</td>
-                <td>
-                    <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}">
+                <td class="input-pro">
+                    <input class="num-product" type="number" value="${product.quantity}" min="1" data-product-id="${product.id}">
                 </td>
-                <td>$${(product.price * product.quantity).toFixed(2)}</td>
-                <td>
+                <td class="sp-sub">$${(product.price * product.quantity).toFixed(2)}</td>
+                <td class="rm-cart">
                     <button class="remove-item" data-product-id="${product.id}">Remove</button>
                 </td>
             `;

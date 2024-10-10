@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CART</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -19,14 +20,14 @@
         <div class="container">
             <div class="cart-details">
                 <h2 class="Cart-title">Shopping Cart</h2>
-                <table class="cart_table">
-                    <thead>
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
                         <tr>
                             <th>Product</th>
-                            <th>Name</th>
+                            <th class="th-special">Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Subtotal</th>
+                            <th class="sp-sub" >Subtotal</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
@@ -36,16 +37,25 @@
                 </table>
 
                 <div class="cart-actions">
-                    <input type="text" id="coupon-code" placeholder="Coupon Code">
-                    <button id="apply-coupon">Apply Coupon</button>
+                    <div class="copon-div">
+                        <input type="text" id="coupon-code" placeholder="Coupon Code">
+                        <button id="apply-coupon">Apply Coupon</button>
+                    </div>
                     <button id="update-cart">Update Cart</button>
                 </div>
 
                 <div class="cart-totals">
                     <p class="total-p">Cart Totals</p>
-                    <div class="p-total">
-                        <p class="sub-p1">Subtotal :</p> 
-                        <p class="sub-p"><span id="total-price">0.00 </span>$</p></div>
+                    <table class="table table-bordered">
+
+                        <tbody>
+                            <!-- Subtotal -->
+                            <tr>
+                                <td class="sp-p">Subtotal :</td>
+                                <td><span id="total-price">0.00 </span>$</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <a class="btn-checkout" id="checkout" href="checkout.html">Proceed to Checkout</a>
 
                 </div>

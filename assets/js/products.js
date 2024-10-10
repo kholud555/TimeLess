@@ -23,26 +23,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartDropdown = document.getElementById('cart-dropdown');
     const cartItems = document.getElementById('cart-items');
 
+
+
+// Load cart from localStorage on page load
+function loadCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cartCount) {
+        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+    }
+    if (cartItems) {
+        // cartItems.innerHTML = '';
+        cart.forEach(product => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                ${product.name} - $${product.price.toFixed(2)} x ${product.quantity}
+                <button class="remove-from-cart" data-product-id="${product.id}">Remove</button>
+            `;
+            cartItems.appendChild(li);
+        });
+    }
+
+    document.querySelectorAll('.remove-from-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-product-id');
+            removeFromCart(productId);
+        });
+    });
+}
+
+    
+
     // Loop through products and create HTML elements
 
     function renderProducts(productsToDisplay) {
-        productContainer.innerHTML = ''; // Clear existing products
-
-        productsToDisplay.forEach(product => {
-            const productElement = document.createElement('div');
-            productElement.classList.add('product');
-
-            productElement.innerHTML = `
-            <a href="product-details.html?id=${product.id}">
-            <img src="${product.image}" alt="${product.name}">
-            </a>
-            <p><a href="product-details.html?id=${product.id}">${product.name}</a></p>
-            <p class="price">$${product.price}</p>
-            <button class="add-to-cart" data-product-id="${product.id}">Add to cart</button>
-        `;
-
-            productContainer.appendChild(productElement);
-        });
+        const productContainer = document.getElementById('products');
+        if (productContainer) {
+            productContainer.innerHTML = ''; // Clear existing products
+    
+            productsToDisplay.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product');
+    
+                productElement.innerHTML = `
+                    <a href="product-details.html?id=${product.id}">
+                    <img src="${product.image}" alt="${product.name}">
+                    </a>
+                    <p><a href="product-details.html?id=${product.id}">${product.name}</a></p>
+                    <p class="price">$${product.price}</p>
+                    <button class="add-to-cart" data-product-id="${product.id}">Add to cart</button>
+                `;
+    
+                productContainer.appendChild(productElement);
+            });
+        } else {
+            console.error("Product container element not found.");
+        }
     }
     // start rendering of the products
     renderProducts(products);
@@ -141,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCart();
     }
 
-    updateCart();
+    // Ensure the cart is loaded and updated on page load
+    loadCart();
 
 
 });
