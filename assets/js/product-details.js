@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    updateCart();
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
     const productDetailsContainer = document.getElementById('product-details');
 
     // Sample product data (same as in the main page)
@@ -27,12 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (product) {
         productDetailsContainer.innerHTML = `
+        
+        <div class="product-image">
             <img src="${product.image}" alt="${product.title}">
+            </div>
+            <div class="product-details">
             <p>${product.name}</p>
             
             <p>${product.description}</p>
             <p class="price">$${product.price}</p>
             <button class="product-add-to-cart" data-product-id="${product.id}" >Add to cart</button>
+            </div>
         `;
         // Add event listener to add to cart button after it's been created
   const addToCartButton = productDetailsContainer.querySelector('.product-add-to-cart');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productDetailsContainer.innerHTML = '<p>Product not found.</p>';
     }
 
-    document.querySelector('.add-to-cart').addEventListener('click', () => {
+    document.querySelector('.product-add-to-cart').addEventListener('click', () => {
         addToCart(productId);
     });
 
@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('counter');
+        const cartCount = document.querySelectorAll('#counter, #counter2');
         const cartItems = document.getElementById('cart-items');
-        if (cartCount) {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-        }
+        cartCount.forEach(counter => {
+            counter.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+          });
 
         if (cartItems) {
             cartItems.innerHTML = '';
@@ -109,8 +109,3 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCart();
 });
     
-
-
-
-
-

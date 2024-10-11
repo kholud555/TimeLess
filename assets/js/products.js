@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const cartCount = document.getElementById('counter');
+    const cartCount = document.querySelectorAll('#counter, #counter2');
     const cartDropdown = document.getElementById('cart-dropdown');
     const cartItems = document.getElementById('cart-items');
 
@@ -28,9 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load cart from localStorage on page load
 function loadCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cartCount) {
-        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-    }
+    const cartCount = document.querySelectorAll('counter, counter2');
+    
+    cartCount.forEach(counter => {
+        counter.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+      });
     if (cartItems) {
         // cartItems.innerHTML = '';
         cart.forEach(product => {
@@ -140,11 +142,11 @@ function loadCart() {
 
     function updateCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartCount = document.getElementById('counter');
+        const cartCount = document.querySelectorAll('#counter, #counter2');
         const cartItems = document.getElementById('cart-items');
-        if (cartCount) {
-            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-        }
+        cartCount.forEach(counter => {
+            counter.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+          });
 
         if (cartItems) {
             cartItems.innerHTML = '';
