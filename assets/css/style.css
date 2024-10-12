@@ -1490,7 +1490,8 @@ tbody {
     }
 }
 
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 960px) {
     .logo-div {
         width: 60%;
         text-align: center;
@@ -1559,14 +1560,16 @@ tbody {
     }
 
     #update-cart {
-        width: 50%;
+        width: 20%;
+        padding: 1.5% 2%;
     }
 
     .btn-checkout,
     .btn-cancel,
     .btn-log,
-    .btn-address {
-        width: 60%;
+    .btn-address,
+    .btn.btn-primary {
+        width: 50%;
     }
 
     .add-to-cart {
@@ -1596,6 +1599,14 @@ tbody {
         margin-bottom: 150px;
     }
 }
+
+@media only screen and (max-width: 550px){
+    #update-cart {
+        width: 30%;
+        padding: 2.1% 2%;
+    }
+}
+
 
 @media only screen and (max-width: 344px) {
     .product {
