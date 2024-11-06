@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 productElement.classList.add('product');
 
                 productElement.innerHTML = `
-                    <a href="product-details.html?id=${product.id}">
+                    <a href="single-product.html?id=${product.id}">
                     <img src="${product.image}" alt="${product.name}">
                     </a>
-                    <p><a href="product-details.html?id=${product.id}">${product.name}</a></p>
+                    <p><a href="single-product.html?id=${product.id}">${product.name}</a></p>
                     <p class="price">$${product.price}</p>
                     <button class="add-to-cart" data-product-id="${product.id}">Add to cart</button>
                 `;
